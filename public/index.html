@@ -3,15 +3,71 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Welcome to Firebase Cloud Functions</title>
+    <title>Tutorial Request</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="./css/styles.css" rel="stylesheet" />
   </head>
   <body>
-    <p id="load">Firebase Functions</p>
+    <!-- new request modal -->
+    <div class="new-request">
+      <div class="modal">
+        <h2>Request a Tutorial</h2>
+        <form>
+          <input type="text" name="request" placeholder="Request..." />
+          <button>Submit Request</button>
+          <p class="error"></p>
+        </form>
+      </div>
+    </div>
 
-    <!-- update the version number as needed -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <header>
+      <nav>
+        <a class="add-request">add request</a>
+        <a class="sign-out">sign out</a>
+      </nav>
+    </header>
 
-    <!-- <script src="js/app.js"></script> -->
+    <section class="content">
+      <h1>Tutorial Requests</h1>
+      <ul class="request-list">
+        <li>
+          <span class="text">Laravel 6 tutorial</span>
+          <div>
+            <span class="votes">125</span>
+            <i class="material-icons upvote">arrow_upward</i>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <script type="text/javascript" src="../config.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: config.API_KEY,
+        authDomain: config.AUTH_DOMAIN,
+        projectId: config.PROJECT_ID,
+        storageBucket: config.STORAGE_BUCKET,
+        messagingSenderId: config.MSG_SENDER_ID,
+        appId: config.APP_ID,
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
+    <script src="./js/app.js"></script>
   </body>
 </html>
